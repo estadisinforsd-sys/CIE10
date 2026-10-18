@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<title>CIE-10 - SIRED</title>
+<title>SIRED</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#020617">
 <style>
@@ -33,17 +33,18 @@
   // 1) Pega aquí la URL de tu aplicación web de Apps Script (termina en /exec):
   var URL_APPS_SCRIPT = "https://script.google.com/macros/s/AKfycbzSkJx_j8WSYCLxbeYZzOQ-iw_AhpA0-IQZdUGLFV5PSl7sHoQPp9n9VaC-d6i5McY/exec";
 
-  // 2) Nombre que aparece en la pantalla de carga y en la pestaña del navegador.
-  //    Cámbialo por el nombre de cada sistema (o déjalo vacío "" para no mostrar nombre).
-  var NOMBRE_SISTEMA = "SIRED";
+  // 2) Nombre que aparece en la PESTAÑA del navegador (pon el que quieras):
+  var NOMBRE_PESTANA = "CIE10_SD";
+
+  // 3) Texto de la PANTALLA DE CARGA (el que sale con la rueda girando):
+  var TEXTO_CARGA = "SIRED";
 
   // =====================================================================
   //  No toques nada de aquí para abajo
   // =====================================================================
   var $ = function (id) { return document.getElementById(id); };
-  var nombre = (NOMBRE_SISTEMA || "").trim();
-  if (nombre) { document.title = nombre; $("nombre").textContent = nombre.toUpperCase(); }
-  else { document.title = "Aplicación"; $("nombre").textContent = ""; }
+  document.title = (NOMBRE_PESTANA || "").trim() || "Aplicación";
+  $("nombre").textContent = (TEXTO_CARGA || "").trim();
 
   if (!/^https:\/\/script\.google\.com\/.+\/exec/.test(URL_APPS_SCRIPT)) {
     document.querySelector(".rueda").style.display = "none";
